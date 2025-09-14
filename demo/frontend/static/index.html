@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="/jquery-1.9.1.js"></script>
+</head>
+<body>
+
+<h1>How to Name My Child</h1>
+
+<form action="/suggestion" id="form">
+    <label for="language">Choose a language:</label>
+    <select id="language" name="language">
+        <option value="english">English</option>
+        <option value="spanish">Spanish</option>
+        <option value="french">French</option>
+        <option value="german">German</option>
+    </select>
+    <label for="gender">Choose a gender:</label>
+    <select id="gender" name="gender">
+        <option value="boy">Boy</option>
+        <option value="girl">Girl</option>
+    </select>
+    <input type="submit">
+</form>
+<div id="suggestion"></div>
+<div id="error"></div>
+
+<script>
+    $("#form").submit(function (event) {
+        const $form = $(this).closest("form");
+        const language = $form.find('select[name="language"]').val();
+        const gender = $form.find('select[name="gender"]').val();
+        const url = $form.attr('action');
+
+        event.preventDefault();
+
+        console.log("Calling " + url + " with language=" + language + " and gender=" + gender);
+
+        $.ajax({
+            url: url,
+            type: 'GET',
+            data: {
+                "language": language,
+                "gender": gender
+            },
+            //dataType: 'application/json; charset=utf-8',
+            success: function (response) {
+                console.log(response);
+                $("#suggestion").empty();
+                $("#error").empty();
+                $("#suggestion").append('Your could name your child <b>' + response['name'] + '</b>.');
+
+            },
+            error: function (xhr) {
+                $("#suggestion").empty();
+                $("#error").empty();
+                $("#error").append("Error: Name service responded with http status " + xhr.status + ': ' + xhr.responseText)
+                console.log(xhr);
+            }
+        });
+        /* Send the data using post */
+
+        /* Put the results in a div */
+
+    });
+</script>
+</body>
+</html>
