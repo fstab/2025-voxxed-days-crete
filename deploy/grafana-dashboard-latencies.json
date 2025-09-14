@@ -133,7 +133,7 @@
         {
           "editorMode": "code",
           "expr": "histogram_quantile(0.95, sum(rate(traces_spanmetrics_latency_bucket{job=\"default/frontend\", span_kind=\"SPAN_KIND_CLIENT\"}[5m])) by (le, span_name))",
-          "legendFormat": "0.95 percentile for {{span_name}}",
+          "legendFormat": "95% latency for {{span_name}}",
           "range": true,
           "refId": "A"
         }
