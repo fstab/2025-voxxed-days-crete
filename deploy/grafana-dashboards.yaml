@@ -6,3 +6,8 @@ providers:
     options:
       path: /mnt/grafana-dashboard-red-metrics.json
       foldersFromFilesStructure: false
+  - name: "Latencies"
+    type: file
+    options:
+      path: /mnt/grafana-dashboard-latencies.json
+      foldersFromFilesStructure: false
