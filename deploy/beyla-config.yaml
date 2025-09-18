@@ -1,4 +1,5 @@
 discovery:
+  # min_process_age: 15s
   instrument:
     - k8s_deployment_name: frontend
     - k8s_deployment_name: name-generator

@@ -49,10 +49,19 @@ kubectl apply \
 	-f ./deploy/frontend.yaml \
 	-f ./deploy/name-generator.yaml \
 	-f ./deploy/load-generator.yaml \
-	-f ./deploy/beyla.yaml \
 	-f ./deploy/prometheus.yaml \
 	-f ./deploy/grafana.yaml \
-	-f ./deploy/tempo.yaml \
+	-f ./deploy/tempo.yaml
+
+# There is currently a timing issue:
+# The Java application needs to be loaded before Beyla attaches.
+# Otherwise Beyla will not scan HTTP path templates correctly.
+# Delay the Beyla install by 15s.
+
+sleep 15
+
+kubectl apply \
+	-f ./deploy/beyla.yaml \
 
 echo
 echo 'Success!'
