@@ -56,7 +56,13 @@ spec:
         volumeMounts:
         - name: config-volume
           mountPath: /etc/prometheus
-        command: ["prometheus", "--web.enable-remote-write-receiver", "--web.enable-otlp-receiver", "--enable-feature=exemplar-storage", "--config.file=/etc/prometheus/prometheus-config.yaml"]
+        command:
+          - "prometheus"
+          - "--web.enable-remote-write-receiver"
+          - "--web.enable-otlp-receiver"
+          - "--enable-feature=exemplar-storage"
+          - "--enable-feature=native-histograms"
+          - "--config.file=/etc/prometheus/prometheus-config.yaml"
       volumes:
       - name: config-volume
         configMap:

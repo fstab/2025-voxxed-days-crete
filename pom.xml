@@ -11,6 +11,6 @@
 	</properties>
 
 	<modules>
-		<module>name-generator</module>
+		<module>demo/name-generator</module>
 	</modules>
 </project>

@@ -107,7 +107,7 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "histogram_quantile(0.95, sum(rate(traces_spanmetrics_latency_bucket{job=\"default/frontend\", span_kind=\"SPAN_KIND_CLIENT\"}[5m])) by (le, span_name))",
+          "expr": "histogram_quantile(0.95, sum(rate(traces_spanmetrics_latency{job=\"default/frontend\", span_kind=\"SPAN_KIND_CLIENT\"}[5m])) by (le, span_name))",
           "legendFormat": "95% latency for {{span_name}}",
           "range": true,
           "refId": "A"
@@ -202,7 +202,7 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "histogram_quantile(0.95, sum(rate(traces_spanmetrics_latency_bucket{job=\"default/name-generator\", span_kind=\"SPAN_KIND_SERVER\"}[5m])) by (le, span_name, source))",
+          "expr": "histogram_quantile(0.95, sum(rate(traces_spanmetrics_latency{job=\"default/name-generator\", span_kind=\"SPAN_KIND_SERVER\"}[5m])) by (le, span_name, source))",
           "legendFormat": "95% latency for {{span_name}}",
           "range": true,
           "refId": "A"
@@ -297,7 +297,7 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "histogram_quantile(0.95, sum(rate(http_server_request_duration_seconds_bucket{job=~\".*name-generator.*\"}[5m])) by (le, http_route))",
+          "expr": "histogram_quantile(0.95, sum(rate(http_server_request_duration_seconds{job=~\".*name-generator.*\"}[5m])) by (le, http_route))",
           "legendFormat": "95% latency for {{http_route}}",
           "range": true,
           "refId": "A"

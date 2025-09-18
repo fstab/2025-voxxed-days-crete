@@ -49,7 +49,8 @@ spec:
       serviceAccountName: beyla
       containers:
         - name: beyla
-          image: grafana/beyla:2.6.4
+          # image: grafana/beyla:2.6.4
+          image: otel/ebpf-instrument:main
           imagePullPolicy: IfNotPresent
           securityContext:
             privileged: true
@@ -58,7 +59,9 @@ spec:
             - mountPath: /config
               name: beyla-config
           env:
-            - name: BEYLA_CONFIG_PATH
+            #- name: BEYLA_CONFIG_PATH
+            #  value: "/config/beyla-config.yaml"
+            - name: OTEL_EBPF_CONFIG_PATH
               value: "/config/beyla-config.yaml"
             - name: OTEL_EBPF_KUBE_CLUSTER_NAME
               value: "kind"

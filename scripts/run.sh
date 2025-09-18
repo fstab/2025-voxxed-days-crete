@@ -24,7 +24,7 @@ echo
 echo "############################################################"
 echo "# Loading upstream Docker images"
 echo "############################################################"
-for docker_image in prom/prometheus grafana/tempo grafana/k6 grafana/grafana grafana/beyla:2.6.4 ; do
+for docker_image in prom/prometheus grafana/tempo grafana/k6 grafana/grafana grafana/beyla:2.6.4 otel/ebpf-instrument:main ; do
     echo "Loading $docker_image"
     if ! docker image inspect $docker_image >/dev/null 2>&1 ; then
         docker pull $docker_image

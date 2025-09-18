@@ -4,6 +4,7 @@ export const options = {
   // run 5 requests in parallel
   vus: 5,
   iterations: 5,
+  noConnectionReuse: true,
 };
 
 const genders = ['boy', 'girl'];
