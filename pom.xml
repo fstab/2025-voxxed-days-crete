@@ -12,5 +12,6 @@
 
 	<modules>
 		<module>demo/name-generator</module>
+		<module>demo/agent</module>
 	</modules>
 </project>
