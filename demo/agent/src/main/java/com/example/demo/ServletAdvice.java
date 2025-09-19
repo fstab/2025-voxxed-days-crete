@@ -14,7 +14,10 @@ public class ServletAdvice {
 
     @Advice.OnMethodExit
     public static void after(HttpServletRequest request, HttpServletResponse response, @Advice.Enter long startTime) {
+        String method = request.getMethod();
+        String path = request.getRequestURI();
+        int status = response.getStatus();
         long duration = System.nanoTime() - startTime;
-        System.err.println("Call to service() took " + duration / 1000000 + "ms");
+        System.err.println(method + " " + path + " returned status " + status + " after " + duration / 1000000 + "ms");
     }
 }
